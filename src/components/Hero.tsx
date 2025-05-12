@@ -68,12 +68,12 @@ const Hero = () => {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Solution-Oriented <span className="block text-primary">Software Engineer</span>
+              Software Developer <span className="block text-primary">Engineer (.NET)</span>
             </h1>
             
             <div className="relative">
               <p className="text-lg md:text-xl text-muted-foreground">
-                Building scalable, cloud-native enterprise applications with performance and precision.
+                5+ years of experience in .NET | Crafting clean code with C# | Building scalable cloud solutions with Azure
                 <span className="block font-semibold mt-2 text-foreground">.NET & Azure Specialist</span>
               </p>
               
