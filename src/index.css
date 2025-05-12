@@ -81,4 +81,18 @@
   .timeline-dot {
     @apply absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-primary;
   }
+
+  @keyframes scan {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(1000%);
+    }
+  }
+
+  .animate-scan {
+    animation: scan 4s linear infinite;
+  }
 }
+
