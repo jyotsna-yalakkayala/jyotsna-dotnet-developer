@@ -4,34 +4,68 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
+import emailjs from '@emailjs/browser';
+import { useForm } from 'react-hook-form';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import * as z from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+
+const formSchema = z.object({
+  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
+  email: z.string().email({ message: 'Please enter a valid email address.' }),
+  message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
+});
 
 const Contact = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      message: '',
+    },
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setLoading(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      await emailjs.send(
+        'service_ma630af', 
+        'template_od32t9i', 
+        {
+          from_name: values.name,
+          from_email: values.email,
+          message: values.message,
+        },
+        'vfH0RrQzmrDG1U3CV'
+      );
+      
       toast({
         title: "Message sent!",
         description: "Thanks for reaching out. I'll get back to you soon.",
       });
-      setFormData({ name: '', email: '', message: '' });
+      
+      form.reset();
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      toast({
+        title: "Failed to send message",
+        description: "There was an error sending your message. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   return (
@@ -83,7 +117,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-sm font-medium">GitHub</p>
-                  <p className="text-muted-foreground">github.com/jyotsna-y</p>
+                  <p className="text-muted-foreground">github.com/jyotsna-yalakkayala</p>
                 </div>
               </div>
             </div>
@@ -91,46 +125,59 @@ const Contact = () => {
           
           <div className="bg-white p-6 rounded-lg shadow-md">
             <h3 className="text-xl font-semibold mb-4">Send a Message</h3>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
-                <Input 
-                  id="name"
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <FormField
+                  control={form.control}
                   name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Your name"
-                  required
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Your name" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
-                <Input 
-                  id="email"
+                
+                <FormField
+                  control={form.control}
                   name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Your email"
-                  required
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input type="email" placeholder="Your email" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-1">Message</label>
-                <Textarea 
-                  id="message"
+                
+                <FormField
+                  control={form.control}
                   name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Your message"
-                  rows={4}
-                  required
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Message</FormLabel>
+                      <FormControl>
+                        <Textarea 
+                          placeholder="Your message" 
+                          className="min-h-[120px]" 
+                          {...field} 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              <Button type="submit" className="w-full" disabled={loading}>
-                {loading ? 'Sending...' : 'Send Message'}
-              </Button>
-            </form>
+                
+                <Button type="submit" className="w-full" disabled={loading}>
+                  {loading ? 'Sending...' : 'Send Message'}
+                </Button>
+              </form>
+            </Form>
           </div>
         </div>
       </div>
