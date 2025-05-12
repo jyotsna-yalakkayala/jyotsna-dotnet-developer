@@ -12,14 +12,14 @@ const VerticalSlice = () => {
   
   return (
     <div className="flex justify-center items-center min-h-[40vh]">
-      <div className="flex flex-col items-center p-5 rounded-xl bg-secondary shadow-md">
+      <div className="flex flex-col items-center p-5 rounded-xl bg-secondary shadow-md w-[300px]">
         {icons.map((item, index) => (
           <div key={index} className="flex flex-col items-center">
-            <div className="w-12 h-12 rounded-full bg-background flex justify-center items-center shadow-sm">
-              <item.Icon size={24} className="text-muted-foreground" />
+            <div className="w-24 h-24 rounded-full bg-background flex justify-center items-center shadow-sm">
+              <item.Icon size={36} className="text-muted-foreground" />
             </div>
             {index < icons.length - 1 && (
-              <div className="w-1 h-16 bg-border my-2"></div>
+              <div className="w-1 h-14 bg-border my-1"></div>
             )}
           </div>
         ))}
