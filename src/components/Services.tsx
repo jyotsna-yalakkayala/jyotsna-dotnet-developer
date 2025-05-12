@@ -25,7 +25,7 @@ const Services = () => {
     },
     {
       title: "Microservices Development",
-      description: "Creating modular, maintainable microservices architectures",
+      description: "Designing scalable, event-driven microservices leveraging Azure Functions, Azure Web Apps, Service Bus, and Event Hub etc.",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
           <rect x="3" y="3" width="6" height="6" rx="1"></rect>
@@ -37,7 +37,7 @@ const Services = () => {
     },
     {
       title: "DevOps Integration",
-      description: "Setting up CI/CD pipelines and automating deployment processes",
+      description: "Writing deployment workflows and automation scripts using YAML within Azure DevOps",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
           <path d="M8 9h8"></path>
