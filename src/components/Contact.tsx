@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -6,70 +5,58 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
 import emailjs from '@emailjs/browser';
 import { useForm } from 'react-hook-form';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-
 const formSchema = z.object({
-  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
-  email: z.string().email({ message: 'Please enter a valid email address.' }),
-  message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
+  name: z.string().min(2, {
+    message: 'Name must be at least 2 characters.'
+  }),
+  email: z.string().email({
+    message: 'Please enter a valid email address.'
+  }),
+  message: z.string().min(10, {
+    message: 'Message must be at least 10 characters.'
+  })
 });
-
 const Contact = () => {
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [loading, setLoading] = useState(false);
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: '',
       email: '',
-      message: '',
-    },
+      message: ''
+    }
   });
-
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setLoading(true);
     try {
-      await emailjs.send(
-        'service_ma630af', 
-        'template_od32t9i', 
-        {
-          from_name: values.name,
-          from_email: values.email,
-          message: values.message,
-        },
-        'vfH0RrQzmrDG1U3CV'
-      );
-      
+      await emailjs.send('service_ma630af', 'template_od32t9i', {
+        from_name: values.name,
+        from_email: values.email,
+        message: values.message
+      }, 'vfH0RrQzmrDG1U3CV');
       toast({
         title: "Message sent!",
-        description: "Thanks for reaching out. I'll get back to you soon.",
+        description: "Thanks for reaching out. I'll get back to you soon."
       });
-      
       form.reset();
     } catch (error) {
       console.error('EmailJS error:', error);
       toast({
         title: "Failed to send message",
         description: "There was an error sending your message. Please try again later.",
-        variant: "destructive",
+        variant: "destructive"
       });
     } finally {
       setLoading(false);
     }
   };
-
-  return (
-    <section id="contact" className="section-padding bg-secondary">
+  return <section id="contact" className="section-padding bg-secondary">
       <div className="container mx-auto">
         <h2 className="section-title">Contact Me</h2>
         
@@ -91,7 +78,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-sm font-medium">Email</p>
-                  <p className="text-muted-foreground">jyotsna@example.com</p>
+                  <p className="text-muted-foreground">jyotsna.yalakkayala@gmail.com</p>
                 </div>
               </div>
               
@@ -105,7 +92,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-sm font-medium">LinkedIn</p>
-                  <p className="text-muted-foreground">linkedin.com/in/jyotsna-y</p>
+                  <p className="text-muted-foreground">www.linkedin.com/in/jyotsna-yalakkayala</p>
                 </div>
               </div>
               
@@ -117,7 +104,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-sm font-medium">GitHub</p>
-                  <p className="text-muted-foreground">github.com/jyotsna-yalakkayala</p>
+                  <p className="text-muted-foreground">https://github.com/jyotsna-yalakkayala</p>
                 </div>
               </div>
             </div>
@@ -127,51 +114,35 @@ const Contact = () => {
             <h3 className="text-xl font-semibold mb-4">Send a Message</h3>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
+                <FormField control={form.control} name="name" render={({
+                field
+              }) => <FormItem>
                       <FormLabel>Name</FormLabel>
                       <FormControl>
                         <Input placeholder="Your name" {...field} />
                       </FormControl>
                       <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                    </FormItem>} />
                 
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
+                <FormField control={form.control} name="email" render={({
+                field
+              }) => <FormItem>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
                         <Input type="email" placeholder="Your email" {...field} />
                       </FormControl>
                       <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                    </FormItem>} />
                 
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
+                <FormField control={form.control} name="message" render={({
+                field
+              }) => <FormItem>
                       <FormLabel>Message</FormLabel>
                       <FormControl>
-                        <Textarea 
-                          placeholder="Your message" 
-                          className="min-h-[120px]" 
-                          {...field} 
-                        />
+                        <Textarea placeholder="Your message" className="min-h-[120px]" {...field} />
                       </FormControl>
                       <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                    </FormItem>} />
                 
                 <Button type="submit" className="w-full" disabled={loading}>
                   {loading ? 'Sending...' : 'Send Message'}
@@ -181,8 +152,6 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Contact;
