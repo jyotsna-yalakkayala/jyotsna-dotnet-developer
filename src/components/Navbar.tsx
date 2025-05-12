@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -18,6 +19,12 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Replace this URL with the link to your externally hosted resume 
+  // (e.g., Google Drive, Dropbox, or personal website)
+  const resumeUrl = '/resume/your-resume.pdf';
+  // const resumeUrl = 'https://drive.google.com/file/d/YOUR_GOOGLE_DRIVE_FILE_ID/view?usp=sharing';
+  // const resumeUrl = 'https://yourpersonalwebsite.com/resume.pdf';
 
   const navLinks = [
     { name: 'Home', to: '/' },
@@ -71,7 +78,7 @@ const Navbar = () => {
             </a>
           ))}
           <Button size="sm" variant="default" className="ml-2" asChild>
-            <a href="/resume/your-resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+            <a href={resumeUrl} target="_blank" rel="noopener noreferrer">Resume</a>
           </Button>
         </nav>
       </div>
@@ -92,7 +99,7 @@ const Navbar = () => {
                 </a>
               ))}
               <Button size="sm" variant="default" className="mt-2" asChild>
-                <a href="/resume/your-resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+                <a href={resumeUrl} target="_blank" rel="noopener noreferrer">Resume</a>
               </Button>
             </nav>
           </div>
