@@ -1,5 +1,7 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import VerticalSlice from "./VerticalSlice";
+
 const About = () => {
   const education = [{
     degree: "Master of Engineering (MEng) in Communication & Networking",
@@ -12,18 +14,17 @@ const About = () => {
     institution: "SRM Institute of Technology",
     period: "June 2012 – June 2016"
   }];
+  
   return <section id="about" className="section-padding bg-white">
       <div className="container mx-auto">
         <h2 className="section-title">About Me</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
           <div className="col-span-1">
-            <div className="rounded-2xl overflow-hidden h-full shadow-md">
-              <img src="/placeholder.svg" alt="Jyotsna Yalakkayala Profile" className="w-full h-full object-cover" />
-            </div>
+            <VerticalSlice />
           </div>
           
-          <div className="col-span-1 md:col-span-1 space-y-6">
+          <div className="col-span-1 md:col-span-2 space-y-6">
             <p className="text-lg leading-relaxed">
               Solution-oriented Software Engineer with 5+ years of experience designing and developing 
               scalable, cloud-native applications using .NET Core and Microsoft Azure. Proven expertise 
@@ -54,4 +55,5 @@ const About = () => {
       </div>
     </section>;
 };
+
 export default About;
