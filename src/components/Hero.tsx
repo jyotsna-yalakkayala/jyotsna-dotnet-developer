@@ -31,13 +31,13 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center pt-16 bg-gradient-to-br from-white to-secondary/20 relative overflow-hidden">
-      {/* AI Particle Background */}
+    <section className="min-h-screen flex items-center pt-16 bg-gradient-to-br from-white to-amber-light/30 relative overflow-hidden">
+      {/* Warm Particle Background */}
       <div className="absolute inset-0 pointer-events-none">
         {particles.map((p) => (
           <div 
             key={p.id}
-            className="absolute rounded-full bg-primary/10"
+            className="absolute rounded-full bg-warm/10"
             style={{
               left: `${p.x}%`,
               top: `${p.y}%`,
@@ -49,20 +49,20 @@ const Hero = () => {
           />
         ))}
         
-        {/* Digital Circuit Lines */}
+        {/* Decorative Lines */}
         <svg className="absolute bottom-0 left-0 w-full h-40 opacity-10" viewBox="0 0 1000 200">
-          <path d="M0,100 Q250,180 500,100 T1000,100" stroke="currentColor" fill="none" className="text-primary" strokeWidth="1" />
-          <path d="M0,150 Q250,50 500,150 T1000,150" stroke="currentColor" fill="none" className="text-primary" strokeWidth="1" />
-          <path d="M100,0 Q180,250 100,500 T100,1000" stroke="currentColor" fill="none" className="text-primary" strokeWidth="1" />
+          <path d="M0,100 Q250,180 500,100 T1000,100" stroke="currentColor" fill="none" className="text-warm" strokeWidth="1" />
+          <path d="M0,150 Q250,50 500,150 T1000,150" stroke="currentColor" fill="none" className="text-amber" strokeWidth="1" />
+          <path d="M100,0 Q180,250 100,500 T100,1000" stroke="currentColor" fill="none" className="text-warm" strokeWidth="1" />
         </svg>
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="space-y-6 animate-fade-in">
-            <div className="inline-block px-3 py-1 rounded-full bg-secondary text-sm font-medium text-primary backdrop-blur-sm border border-primary/10">
+            <div className="inline-block px-3 py-1 rounded-full bg-secondary text-sm font-medium text-warm backdrop-blur-sm border border-warm/10">
               <span className="flex items-center">
-                <span className="h-2 w-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                <span className="h-2 w-2 bg-warm rounded-full mr-2 animate-pulse"></span>
                 Available for collaboration
               </span>
             </div>
@@ -77,8 +77,8 @@ const Hero = () => {
                 <span className="block font-semibold mt-2 text-foreground">.NET & Azure Specialist</span>
               </p>
               
-              {/* AI-powered typing animation */}
-              <div className="h-0.5 w-16 bg-primary/50 mt-2 animate-pulse"></div>
+              {/* Typing animation */}
+              <div className="h-0.5 w-16 bg-warm/50 mt-2 animate-pulse"></div>
             </div>
             
             <div className="flex flex-wrap gap-4">
@@ -97,25 +97,25 @@ const Hero = () => {
           
           <div className="flex justify-center">
             <div className="relative">
-              {/* Profile image with digital frame effect */}
+              {/* Profile image with frame effect */}
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl relative">
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent pointer-events-none z-10"></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-warm/20 to-transparent pointer-events-none z-10"></div>
                 <img 
                   src="https://i.postimg.cc/3wqDTRvF/Portfolio-profilre-picture.jpg"
                   alt="Jyotsna Yalakkayala"
                   className="w-full h-full object-cover"
                 />
                 
-                {/* Digital scan effect */}
+                {/* Scan effect */}
                 <div className="absolute inset-0 overflow-hidden">
-                  <div className="h-1.5 w-full bg-primary/10 animate-scan"></div>
+                  <div className="h-1.5 w-full bg-amber/10 animate-scan"></div>
                 </div>
               </div>
               
-              {/* Badge with AI-enhanced style */}
-              <div className="absolute -bottom-4 -right-4 bg-white py-2 px-4 rounded-full shadow-lg backdrop-blur-sm border border-secondary/30 animate-fade-in" style={{ animationDelay: "0.5s" }}>
+              {/* Badge with enhanced style */}
+              <div className="absolute -bottom-4 -right-4 bg-white py-2 px-4 rounded-full shadow-lg backdrop-blur-sm border border-amber/30 animate-fade-in" style={{ animationDelay: "0.5s" }}>
                 <div className="flex items-center gap-2 relative">
-                  <span className="h-3 w-3 bg-green-500 rounded-full animate-pulse"></span>
+                  <span className="h-3 w-3 bg-warm rounded-full animate-pulse"></span>
                   <span className="font-medium text-sm">Azure Certified</span>
                 </div>
               </div>
@@ -123,7 +123,7 @@ const Hero = () => {
               {/* Decorative dots */}
               <div className="absolute -left-8 -bottom-8 grid grid-cols-3 gap-2">
                 {Array.from({ length: 9 }).map((_, i) => (
-                  <div key={i} className="w-1.5 h-1.5 rounded-full bg-primary/30"></div>
+                  <div key={i} className="w-1.5 h-1.5 rounded-full bg-amber/30"></div>
                 ))}
               </div>
             </div>

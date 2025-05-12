@@ -54,13 +54,13 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				// Custom colors for portfolio
-				navy: {
-					DEFAULT: '#2B4162',
-					light: '#385F71'
+				warm: {
+					DEFAULT: '#F97316',
+					light: '#FDBA74'
 				},
-				steel: {
-					DEFAULT: '#5F7A91',
-					light: '#8BA0B4'
+				amber: {
+					DEFAULT: '#D97706',
+					light: '#FDE68A'
 				}
 			},
 			borderRadius: {
