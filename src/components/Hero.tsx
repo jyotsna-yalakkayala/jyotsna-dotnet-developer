@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 
@@ -88,9 +87,11 @@ const Hero = () => {
                   <span className="absolute inset-0 w-full h-full bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 </a>
               </Button>
-              <Button variant="outline" size="lg" className="relative overflow-hidden group">
-                <span>View Resume</span>
-                <span className="absolute inset-0 w-full h-full bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+              <Button variant="outline" size="lg" className="relative overflow-hidden group" asChild>
+                <a href="/resume/your-resume.pdf" target="_blank" rel="noopener noreferrer">
+                  <span>View Resume</span>
+                  <span className="absolute inset-0 w-full h-full bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                </a>
               </Button>
             </div>
           </div>

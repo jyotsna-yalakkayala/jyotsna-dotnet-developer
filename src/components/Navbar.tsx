@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -71,7 +70,9 @@ const Navbar = () => {
               {link.name}
             </a>
           ))}
-          <Button size="sm" variant="default" className="ml-2">Resume</Button>
+          <Button size="sm" variant="default" className="ml-2" asChild>
+            <a href="/resume/your-resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+          </Button>
         </nav>
       </div>
 
@@ -90,7 +91,9 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <Button size="sm" variant="default" className="mt-2">Resume</Button>
+              <Button size="sm" variant="default" className="mt-2" asChild>
+                <a href="/resume/your-resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+              </Button>
             </nav>
           </div>
         </div>
