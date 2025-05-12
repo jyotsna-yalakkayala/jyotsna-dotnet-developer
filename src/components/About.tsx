@@ -1,5 +1,6 @@
 
 import { Card, CardContent } from "@/components/ui/card";
+import VerticalSlice from "./VerticalSlice";
 
 const About = () => {
   const education = [
@@ -32,7 +33,10 @@ const About = () => {
               />
             </div>
           </div>
-          <div className="col-span-1 md:col-span-2 space-y-6">
+          <div className="col-span-1 md:col-span-1 flex justify-center">
+            <VerticalSlice />
+          </div>
+          <div className="col-span-1 md:col-span-1 space-y-6">
             <p className="text-lg leading-relaxed">
               Solution-oriented Software Engineer with 5+ years of experience designing and developing 
               scalable, cloud-native applications using .NET Core and Microsoft Azure. Proven expertise 
