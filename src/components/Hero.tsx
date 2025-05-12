@@ -101,7 +101,7 @@ const Hero = () => {
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl relative">
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent pointer-events-none z-10"></div>
                 <img 
-                  src="/placeholder.svg"
+                  src="https://i.postimg.cc/3wqDTRvF/Portfolio-profilre-picture.jpg"
                   alt="Jyotsna Yalakkayala"
                   className="w-full h-full object-cover"
                 />
